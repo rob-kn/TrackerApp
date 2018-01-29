@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang = "en">
+   <head></head>
+   <body>
+
+      <hr/>
+      {%- for message in get_flashed_messages() %}
+         {{ message }}
+      {%- endfor %}
+
+      <h3>Tasks (<a href = "{{ url_for('new_task') }}">Add Task
+         </a>) | Items (<a href = "{{ url_for('new_item') }}">Add Item
+         </a>) | Expenses (<a href = "{{ url_for('new_expense') }}">Add Expense
+         </a>)</h3>
+
+      <br>
+      <h2>Tasks</h2>
+      <table border="3" cellpadding="10">
+         <thead>
+            <tr>
+               <th>Title</th>
+               <th>Status</th>
+               <th>Priority</th>
+               <th>Desc</th>
+               <th>Date created</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for task in tasks %}
+               <tr>
+                  <td>{{ task.title }}</td>
+                  <td>{{ task.status }}</td>
+                  <td>{{ task.priority }}</td>
+                  <td>{{ task.desc }}</td>
+                  <td>{{ task.date_created }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+      <br>
+      <h2>Items</h2>
+      <table border="3" cellpadding="10">
+         <thead>
+            <tr>
+               <th>Title</th>
+               <th>Status</th>
+               <th>Desc</th>
+               <th>Date created</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for item in items %}
+               <tr>
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.status }}</td>
+                  <td>{{ item.desc }}</td>
+                  <td>{{ item.date_created }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+      <br>
+      <h2>Expenses</h2>
+      <table border="3" cellpadding="10">
+         <thead>
+            <tr>
+               <th>Title</th>
+               <th>Cost</th>
+               <th>Category</th>
+               <th>Desc</th>
+               <th>Date created</th>
+            </tr>
+         </thead>
+
+         <tbody>
+            {% for expense in expenses %}
+               <tr>
+                  <td>{{ expense.title }}</td>
+                  <td>{{ expense.cost }}</td>
+                  <td>{{ expense.category }}</td>
+                  <td>{{ expense.desc }}</td>
+                  <td>{{ expense.date_created }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+   </body>
+</html>

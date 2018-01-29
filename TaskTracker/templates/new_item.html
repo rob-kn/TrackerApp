@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h3>New Item</h3>
+<hr/>
+
+{%- for category, message in get_flashed_messages(with_categories = true) %}
+<div class="alert alert-danger">
+    {{ message }}
+</div>
+{%- endfor %}
+
+<form action="{{ url_for('new_item') }}" method="post">
+    {{ form.csrf }}
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(size=40) }}<br>
+        {% for error in form.title.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}<br>
+        {{ form.desc.label }}<br>
+        {{ form.desc(size=50) }}<br>
+        {% for error in form.desc.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}<br>
+    </p>
+    {{ form.submit() }}
+</form>
+
+</body>
+</html>
